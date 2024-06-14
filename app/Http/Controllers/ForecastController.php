@@ -21,11 +21,13 @@ class ForecastController extends Controller
 
     public function store(Request $request)
     {
-         $forecast = new Forecast();
-        $forecast->cep = $request->cep;
-        $forecast->localidade = $request->localidade;
-        $forecast->temperatura = $request->temperatura;
-        $forecast->save();
+        if ($request->cep <> '') {
+            $forecast = new Forecast();
+            $forecast->cep = $request->cep;
+            $forecast->localidade = $request->localidade;
+            $forecast->temperatura = $request->temperatura;
+            $forecast->save();
+        }
         // dd($request->all('_token'));
 
         $forecasts = Forecast::all();
