@@ -27,10 +27,8 @@ class ForecastController extends Controller
         $forecast->cep = $request->cep;
         $forecast->localidade = $request->localidade;
         $forecast->temperatura = $request->temperatura;
-        dd($request->all('localidade'));
-        
-        //$forecast->save();
+        $forecast->save();
         // dd($request->all('_token'));
-        //return Forecast::create($request->all());
+        // return view('forecast.store');
     }
 }
