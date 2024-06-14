@@ -9,6 +9,8 @@
 
 <a href="{{ Route('forecast.create')}}">Buscar CEP</a>
 
+<a href="{{ Route('forecast.compare')}}">Comparar Previsão</a>
+
 <body>
     <h1>Histórico</h1>
     <table>

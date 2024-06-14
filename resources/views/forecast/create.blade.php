@@ -2,13 +2,15 @@
 
 <form action="{{route('forecast.store')}}" method="POST">
     @csrf()
-    <input type="text" onchange="BuscarApiCep()" id="txtCep" name="cep" placeholder="cep">
-    <input type="text" name="localidade" id="txtLocalidade" placeholder="localidade">
-    <input style="display:none;" id="temperatura" type="text" name="temperatura" placeholder="temperatura">
-    <button type="submit">Enviar FORM</button>
+    <button type="submit">Voltar</button>
+    <div class="row">
+        <input type="text" onchange="BuscarApiCep()" id="txtCep" name="cep" placeholder="cep">
+        <input type="text" name="localidade" id="txtLocalidade" placeholder="localidade">
+        <input style="display:none;" id="temperatura" type="text" name="temperatura" placeholder="temperatura">
+    </div>
 </form>
 
-<button onclick="BuscarPrevisaoTempo()">Enviar</button>
+<button onclick="BuscarPrevisaoTempo()">Buscar Previsão</button>
 <div id="divCamposPrevisao" class="container mt-5">
     <h1 class="text-left">Previsão do Tempo</h1>
     <p id="mensagem" class="mt-3"></p>
