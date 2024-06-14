@@ -10,6 +10,7 @@
     </div>
 </form>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <button onclick="BuscarPrevisaoTempo()">Buscar Previsão</button>
 <div id="divCamposPrevisao" class="container mt-5">
     <h1 class="text-left">Previsão do Tempo</h1>
@@ -70,56 +71,79 @@
 
 
 <script language="JavaScript">
-    var div = document.getElementById('divCamposPrevisao');
-    div.style.display = 'none';
+    $("#divCamposPrevisao").hide();
+
+    function Cadastrar() {
+        BuscarPrevisaoTempo().then(
+            $('#formForecast').on('submit', function(event) {
+                event.preventDefault();
+                const formData = new FormData(this);
+
+                fetch(this.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                        }
+                    }).then(response => {
+                        if (!response.ok) {
+                            console.log('Aconteceu Algo de Errado');
+                        }
+                        return {
+                            message: 'cadastrado'
+                        }
+                    })
+                    .then(data => {
+                        alert(data.message);
+                    })
+                    .catch(error => {
+                        console.log('Error: ', error);
+                    });
+            })
+        );
+    }
 
     function BuscarApiCep() {
-        var cep = document.getElementById('txtCep').value;
         const xhr = new XMLHttpRequest();
-        xhr.open('GET', 'https://viacep.com.br/ws/' + cep + '/json/');
+        xhr.open('GET', 'https://viacep.com.br/ws/' + $("#txtCep").val() + '/json/');
         xhr.onload = function() {
             if (xhr.status === 200) {
                 const dados = JSON.parse(xhr.responseText);
                 if (dados.erro) {
                     alert("CEP não encontrado. Tente novamente!");
-                    document.getElementById("txtCep").value = "";
-                    document.getElementById("txtLocalidade").value = "";
+                    $("#txtCep").val("")
+                    $("#txtLocalidade").val("");
                     $("#divCamposPrevisao").hide();
                 } else {
-                    document.getElementById("txtCep").value = dados.cep;
-                    document.getElementById("txtLocalidade").value = dados.localidade;
+                    $("#txtCep").val(dados.cep)
+                    $("#txtLocalidade").val(dados.localidade);
                 }
             }
         };
         xhr.send();
     }
-
     function BuscarPrevisaoTempo() {
-        var localidade = document.getElementById("txtLocalidade").value;
         const xhr = new XMLHttpRequest();
-        xhr.open('GET', 'http://api.weatherstack.com/current?access_key=a3001c0826ecfc59c230afa1a662008b&query=' + localidade);
+        xhr.open('GET', 'http://api.weatherstack.com/current?access_key=921e05a0f4de567e2c5af5c713eca96f&query=' + $("#txtLocalidade").val());
         xhr.onload = function() {
             if (xhr.status === 200) {
                 const previsao = JSON.parse(xhr.responseText);
                 if (previsao.erro) {
                     alert("Cidade não encontrada!");
-                    document.getElementById("txtCep").value = "";
-                    document.getElementById("txtLocalidade").value = "";
-                    var div = document.getElementById('divCamposPrevisao');
-                    div.style.display = 'none';
+                    $("#txtCep").val("")
+                    $("#txtLocalidade").val("");
+                    $("#divCamposPrevisao").hide();
                 } else {
-                    var div = document.getElementById('divCamposPrevisao');
-                    div.style.display = 'block';
-                    console.log(previsao)
-                    document.getElementById("txtDataHora").value = previsao.location.localtime;
-                    document.getElementById("txtUmidade").value = previsao.current.humidity;
-                    document.getElementById("txtDescricaoTempo").value = previsao.current.weather_descriptions[0];
-                    document.getElementById("txtPressaoDoAr").value = previsao.current.pressure;
-                    document.getElementById("txtVisibilidade").value = previsao.current.visibility;
-                    document.getElementById("txtTemperatura").value = previsao.current.temperature;
-                    document.getElementById("temperatura").value = previsao.current.temperature;
-                    document.getElementById("txtVentoPara").value = previsao.current.wind_dir;
-                    document.getElementById("txtVelocidadeVento").value = previsao.current.wind_speed;
+                    $("#divCamposPrevisao").show();
+                    $("#txtDataHora").val(previsao.location.localtime);
+                    $("#txtUmidade").val(previsao.current.humidity);
+                    $("#txtDescricaoTempo").val(previsao.current.weather_descriptions[0]);
+                    $("#txtPressaoDoAr").val(previsao.current.pressure);
+                    $("#txtVisibilidade").val(previsao.current.visibility);
+                    $("#txtTemperatura").val(previsao.current.temperature);
+                    $("#temperatura").val(previsao.current.temperature);
+                    $("#txtVentoPara").val(previsao.current.wind_dir);
+                    $("#txtVelocidadeVento").val(previsao.current.wind_speed);
                 }
             }
         };

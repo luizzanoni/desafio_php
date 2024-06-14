@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Document</title>
 </head>
 
@@ -145,6 +146,7 @@
         </div>
     </div>
     <button onclick="LimparCampos()">Limpar Comparação</button>
+    <a href="{{ Route('forecast.index')}}">Voltar</a>
 </body>
 
 </html>
@@ -152,28 +154,29 @@
 <script>
     function BuscarPorCidade(localidade) {
         const xhr = new XMLHttpRequest();
-        xhr.open('GET', 'http://api.weatherstack.com/current?access_key=a3001c0826ecfc59c230afa1a662008b&query=' + localidade);
+        xhr.open('GET', 'http://api.weatherstack.com/current?access_key=921e05a0f4de567e2c5af5c713eca96f&query=' + localidade);
         xhr.onload = function() {
             if (xhr.status === 200) {
                 const previsao = JSON.parse(xhr.responseText);
-                if (document.getElementById("txtDataHora1").value == "") {
-                    document.getElementById("txtDataHora1").value = previsao.location.localtime;
-                    document.getElementById("txtUmidade1").value = previsao.current.humidity;
-                    document.getElementById("txtDescricaoTempo1").value = previsao.current.weather_descriptions[0];
-                    document.getElementById("txtPressaoDoAr1").value = previsao.current.pressure;
-                    document.getElementById("txtVisibilidade1").value = previsao.current.visibility;
-                    document.getElementById("txtTemperatura1").value = previsao.current.temperature;
-                    document.getElementById("txtVentoPara1").value = previsao.current.wind_dir;
-                    document.getElementById("txtVelocidadeVento1").value = previsao.current.wind_speed;
+                console.log(previsao)
+                if ($("#txtDataHora1").val() == "") {
+                    $("#txtDataHora1").val(previsao.location.localtime);
+                    $("#txtUmidade1").val(previsao.current.humidity);
+                    $("#txtDescricaoTempo1").val(previsao.current.weather_descriptions[0]);
+                    $("#txtPressaoDoAr1").val(previsao.current.pressure);
+                    $("#txtVisibilidade1").val(previsao.current.visibility);
+                    $("#txtTemperatura1").val(previsao.current.temperature);
+                    $("#txtVentoPara1").val(previsao.current.wind_dir);
+                    $("#txtVelocidadeVento1").val(previsao.current.wind_speed);
                 } else {
-                    document.getElementById("txtDataHora2").value = previsao.location.localtime;
-                    document.getElementById("txtUmidade2").value = previsao.current.humidity;
-                    document.getElementById("txtDescricaoTempo2").value = previsao.current.weather_descriptions[0];
-                    document.getElementById("txtPressaoDoAr2").value = previsao.current.pressure;
-                    document.getElementById("txtVisibilidade2").value = previsao.current.visibility;
-                    document.getElementById("txtTemperatura2").value = previsao.current.temperature;
-                    document.getElementById("txtVentoPara2").value = previsao.current.wind_dir;
-                    document.getElementById("txtVelocidadeVento2").value = previsao.current.wind_speed;
+                    $("#txtDataHora2").val(previsao.location.localtime);
+                    $("#txtUmidade2").val(previsao.current.humidity);
+                    $("#txtDescricaoTempo2").val(previsao.current.weather_descriptions[0]);
+                    $("#txtPressaoDoAr2").val(previsao.current.pressure);
+                    $("#txtVisibilidade2").val(previsao.current.visibility);
+                    $("#txtTemperatura2").val(previsao.current.temperature);
+                    $("#txtVentoPara2").val(previsao.current.wind_dir);
+                    $("#txtVelocidadeVento2").val(previsao.current.wind_speed);
                 }
             }
         };
@@ -181,22 +184,21 @@
     }
 
     function LimparCampos() {
-        document.getElementById("txtDataHora1").value = "";
-        document.getElementById("txtUmidade1").value = "";
-        document.getElementById("txtDescricaoTempo1").value = "";
-        document.getElementById("txtPressaoDoAr1").value = "";
-        document.getElementById("txtVisibilidade1").value = "";
-        document.getElementById("txtTemperatura1").value = "";
-        document.getElementById("txtVentoPara1").value = "";
-        document.getElementById("txtVelocidadeVento1").value = "";
-
-        document.getElementById("txtDataHora2").value = "";
-        document.getElementById("txtUmidade2").value = "";
-        document.getElementById("txtDescricaoTempo2").value = "";
-        document.getElementById("txtPressaoDoAr2").value = "";
-        document.getElementById("txtVisibilidade2").value = "";
-        document.getElementById("txtTemperatura2").value = "";
-        document.getElementById("txtVentoPara2").value = "";
-        document.getElementById("txtVelocidadeVento2").value = "";
+        $("#txtDataHora1").val();
+        $("#txtUmidade1").val();
+        $("#txtDescricaoTempo1").val();
+        $("#txtPressaoDoAr1").val();
+        $("#txtVisibilidade1").val();
+        $("#txtTemperatura1").val();
+        $("#txtVentoPara1").val();
+        $("#txtVelocidadeVento1").val();
+        $("#txtDataHora2").val();
+        $("#txtUmidade2").val();
+        $("#txtDescricaoTempo2").val();
+        $("#txtPressaoDoAr2").val();
+        $("#txtVisibilidade2").val();
+        $("#txtTemperatura2").val();
+        $("#txtVentoPara2").val();
+        $("#txtVelocidadeVento2").val();
     }
 </script>
