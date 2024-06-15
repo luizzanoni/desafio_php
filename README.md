@@ -1,22 +1,35 @@
 # DesafioPHP
 
 Para iniciarmos, clone esse repositorio em sua máquina:
-`git clone https://github.com/luizzanoni/DesafioPHP.git`
+```sh
+git clone https://github.com/luizzanoni/DesafioPHP.git
+```
 
 Crie o arquivo .env:
-`cp .env.example .env`
+```sh
+cp .env.example .env
+```
 
 Abra o docker, e acesse o container app:
-`docker-compose exec app bash`
+```sh
+docker-compose exec app bash
+```
 
 Instale as depências do projeto (composer):
-`composer install`
+```sh
+composer install
+```
 
 Gere a sua key do projeto Laravel:
-`php artisan key:generate`
+```sh
+php artisan key:generate
+```
 
 Rode os migrations para criar as tabelas:
-`php artisan migrate`
+```sh
+php artisan migrate
+```
+
 
 Pronto! Projeto devidamente rodando, pode acessar com `http://localhost:8000/forecast`
 

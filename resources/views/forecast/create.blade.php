@@ -20,7 +20,6 @@
             box-sizing: border-box;
             overflow-y: auto;
             height: 100%;
-            /* Added for vertical scrolling */
         }
 
         .main-container {
