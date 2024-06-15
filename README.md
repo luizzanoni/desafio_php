@@ -41,3 +41,8 @@ Inicialmente, a linguagem utilizada no front-end foi HTML e CSS, juntamente com 
 Em primeiro momento, considerei a ideia de não criar migrations para rodar os bancos de dados, optando por criar os bancos diretamente com inserts e chamando os repositórios e controllers para realizar o trabalho. No entanto, acredito que a organização é melhor quando utilizamos migrations, permitindo a criação direta dos bancos de dados sem necessidade de informar os campos na entidade (Model).
 
 Para o banco de dados, utilizei MySQL, configurado no Docker, e subi os containers para utilização do banco de dados, garantindo um código limpo e atualizado.
+
+Apresentação do Projeto:
+<p align="center">
+    <img width="800" height="450" src="resources/to_readme/Animacao.gif">
+</p>
