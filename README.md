@@ -31,7 +31,10 @@ php artisan migrate
 ```
 
 
-Pronto! Projeto devidamente rodando, pode acessar com `http://localhost:8000/forecast`
+Pronto! Projeto devidamente rodando, pode acessar com 
+```sh
+http://localhost:8000/forecast
+```
 
 Inicialmente, a linguagem utilizada no front-end foi HTML e CSS, juntamente com Blade, próprio do PHP, para realizar as funções. As requisições foram feitas por rotas e formulários juntamente com o front-end. Para realizar as chamadas das APIs (ViaCEP e Weatherstack), utilizei JavaScript com jQuery, permitindo carregar valores de campos e aplicar a lógica de exibição de grids/campos. Para submeter as pesquisas feitas pelo usuário (método salvar), utilizei a linguagem PHP/Laravel, informando as rotas e direcionando para o controller.
 
