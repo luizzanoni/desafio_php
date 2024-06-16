@@ -1,5 +1,7 @@
 # DesafioPHP
 
+## Para clonar e rodar o projeto em sua máquina.
+
 Para iniciarmos, clone esse repositorio em sua máquina:
 ```sh
 git clone https://github.com/luizzanoni/DesafioPHP.git
