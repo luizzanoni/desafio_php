@@ -46,5 +46,5 @@ Para o banco de dados, utilizei MySQL, configurado no Docker, e subi os containe
 
 Apresentação do Projeto:
 <p align="center">
-    <img width="800" height="450" src="resources/to_readme/Animacao.gif">
+    <img width="800" height="450" src="resources/to_readme/animacao_final.gif">
 </p>
