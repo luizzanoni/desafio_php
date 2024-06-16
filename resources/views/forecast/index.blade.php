@@ -4,9 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Previsão Tempo</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -114,6 +113,7 @@
 
 <body>
     <div class="container">
+        <h1>Busque ou Compare Previsões de tempo! <i class="fas fa-cloud-sun"></i></h1>
         <a href="{{ Route('forecast.create') }}"><i class="fas fa-search"></i>Buscar CEP</a>
         <a href="{{ Route('forecast.compare') }}"><i class="fas fa-exchange-alt"></i>Comparar Previsão</a>
 

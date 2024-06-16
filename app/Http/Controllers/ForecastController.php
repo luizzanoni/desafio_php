@@ -27,6 +27,8 @@ class ForecastController extends Controller
             $forecast->localidade = $request->localidade;
             $forecast->temperatura = $request->temperatura;
             $forecast->save();
+
+            session()->flash('success', 'Dados salvos com sucesso!');
         }
         // dd($request->all('_token'));
 

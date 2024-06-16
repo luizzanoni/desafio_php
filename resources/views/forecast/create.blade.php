@@ -133,12 +133,12 @@
             <h3>Novo CEP/Busca</h3>
             <form action="{{route('forecast.store')}}" method="POST">
                 @csrf
-                <button type="submit">Voltar</button>
                 <div class="row">
                     <input type="text" onchange="BuscarApiCep()" id="txtCep" name="cep" placeholder="CEP">
                     <input type="text" name="localidade" id="txtLocalidade" placeholder="Localidade">
                     <input style="display:none;" id="temperatura" type="text" name="temperatura" placeholder="Temperatura">
                 </div>
+                <button id="btnSalvar" type="submit">Salvar</button>
             </form>
             <button onclick="BuscarPrevisaoTempo()">Buscar Previsão</button>
         </div>
@@ -188,6 +188,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script language="JavaScript">
         $("#divCamposPrevisao").hide();
+        $("#btnSalvar").hide();
 
         function Cadastrar() {
             BuscarPrevisaoTempo().then(
@@ -241,6 +242,7 @@
 
         function BuscarPrevisaoTempo() {
             $("#divCamposPrevisao").show();
+            $("#btnSalvar").show();
             const xhr = new XMLHttpRequest();
             xhr.open('GET', 'http://api.weatherstack.com/current?access_key=921e05a0f4de567e2c5af5c713eca96f&query=' + $("#txtLocalidade").val());
             xhr.onload = function() {
