@@ -4,7 +4,7 @@
 
 Para iniciarmos, clone esse repositorio em sua máquina:
 ```sh
-git clone https://github.com/luizzanoni/DesafioPHP.git
+git clone https://github.com/luizzanoni/desafio_php.git
 ```
 
 Crie o arquivo .env:
